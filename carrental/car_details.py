@@ -81,3 +81,8 @@ class CarDetails:
             return True
         return False
     
+    '''self.reservations = [
+    {"start": April 5, "end": April 10},
+    {"start": April 12, "end": April 15}
+]'''
+    

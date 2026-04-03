@@ -4,10 +4,8 @@ from car_details import CarDetails
 from check_avail_cars import CheckAvailableCars
 from payment import Payment
 
-from car_data_enum import (
-    CarBrand, CarType, CarStatus, RentalLocation,
-    PaymentMethod
-)
+from car_data_enum import CarBrand, CarType, CarStatus, RentalLocation,PaymentMethod
+
 
 
 car1 = CarDetails(
@@ -57,9 +55,8 @@ checker = CheckAvailableCars(cars_list, search_date, location, days_required)
 available_cars = checker.check_availability()
 
 print("\nAvailable Cars:")
-for i, car in enumerate(available_cars):
-    print(f"{i+1}. {car.car_info()}")
-
+for car in available_cars:
+    print(car.car_info())
 
 selected_car = available_cars[0]  
 
@@ -68,13 +65,13 @@ print(selected_car.car_info())
 
 
 start_date = search_date
-end_date = start_date + timedelta(days=days_required)
+end_date = start_date + timedelta(days_required)
 
 if selected_car.add_reservation(start_date, end_date):
     print("\nReservation Successful")
 
-   
-    total_cost = selected_car.calculate_rental_cost(days=days_required)
+
+    total_cost = selected_car.calculate_rental_cost(location, days_required)
     print(f"Total Cost: ${total_cost}")
 
     
