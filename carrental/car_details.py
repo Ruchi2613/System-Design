@@ -5,7 +5,7 @@ from car_data_enum import CarBrand,RentalLocation,CarStatus,CarType,RentalDurati
 from datetime import datetime
 
 class CarDetails:
-    def __init__(self, brand:CarBrand, model, year, license_plate, rental_price_per_day,type:CarType,available_date:datetime,location:RentalLocation,status:CarStatus):
+    def __init__(self, brand:CarBrand, model, year, license_plate, rental_price_per_day,type:CarType, available_date:datetime, location:RentalLocation, status:CarStatus):
         self.brand = brand
         self.model = model
         self.year = year
