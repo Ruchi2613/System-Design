@@ -41,3 +41,18 @@ class CoffeeStatus(Enum):
     PREPARING = "preparing"
     READY = "ready"
 
+class PaymentStatus(Enum):
+    PENDING = "pending"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+class PayementMethod(Enum):
+    CASH = "cash"
+    CARD = "card"
+    MOBILE_PAYMENT = "mobile_payment"
+
+# class MachineStatus(Enum):
+#     OPERATIONAL = "operational"
+#     OUT_OF_ORDER = "out_of_order"
+#     MAINTENANCE = "maintenance"
+
