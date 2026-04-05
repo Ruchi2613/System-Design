@@ -3,9 +3,9 @@
 class CoffeeMenu:
     def __init__(self):
         self.menu = {
-            "Espresso": 2.5,
-            "Cappuccino": 3.0,
-            "Latte": 3.5
+            "espresso": 2.5,
+            "cappuccino": 3.0,
+            "latte": 3.5
         }
 
     def display_menu(self):

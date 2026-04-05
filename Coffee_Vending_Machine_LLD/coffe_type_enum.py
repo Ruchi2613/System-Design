@@ -46,7 +46,7 @@ class PaymentStatus(Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
-class PayementMethod(Enum):
+class PaymentMethod(Enum):
     CASH = "cash"
     CARD = "card"
     MOBILE_PAYMENT = "mobile_payment"
