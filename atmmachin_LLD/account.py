@@ -8,14 +8,16 @@
 class AccountTransaction:
     '''account_number is the unique identifier for the user's bank account'''
     '''balance is the current amount of money in the user's bank account.'''
-    def __init__(self, account_number, balance):
+    def __init__(self, account_number, balance, pin):
         self.account_number = account_number
         self.balance = balance
-
+        self.pin = pin
+        self.transaction_history = []
 
     def deposit(self, amount):
         '''deposit method allows the user to add money to their account. It takes an amount as input and adds it to the current balance.'''
         self.balance += amount
+        self.transaction_history.append(("deposit", amount))
         return self.balance
 
 
@@ -23,7 +25,7 @@ class AccountTransaction:
         '''withdraw method allows the user to remove money from their account. It takes an amount as input and subtracts it from the current balance.'''
         if amount > 0 and amount <= self.balance:
             self.balance -= amount
-            print(f'You have withdrawn: {amount}')
+            self.transaction_history.append(("withdraw", amount))
             return f'after withdrawing your current balance is: {self.balance}'
         else:
             return f"Insufficient balance or invalid amount."
@@ -31,3 +33,11 @@ class AccountTransaction:
     def get_balance(self):
         '''get_balance method returns the current balance of the user's account.'''
         return self.balance
+    
+    def check_pin(self, pin):
+        '''check_pin method verifies if the provided PIN matches the stored PIN for the account.'''
+        return self.pin == pin
+    
+    def get_transaction_history(self):
+        '''get_transaction_history method returns a list of all transactions made on the account.'''
+        return self.transaction_history

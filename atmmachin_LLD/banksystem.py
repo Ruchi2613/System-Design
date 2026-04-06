@@ -5,14 +5,20 @@ class BankSystem:
         '''accounts is a dictionary that stores the account information for each user. The keys are the account numbers, and the values are instances of the AccountTransaction class.'''
         self.accounts = {}
 
-    def add_account(self, account_number, balance):
-        '''add_account method allows the bank system to add a new account to its records. It takes an account number and an initial balance as input and creates a new instance of the AccountTransaction class for that account.'''
-        self.accounts[account_number] = AccountTransaction(account_number, balance)
+    def add_account(self, account_number, balance, pin):
+        self.accounts[account_number] = AccountTransaction(account_number, balance, pin)
 
     def get_account(self, account_number):
         '''get_account method retrieves the account information for a given account number. It returns the corresponding AccountTransaction instance if the account exists, or None if it does not.'''
         return self.accounts.get(account_number)
+
     
+    def authenticate(self, account_number, pin):
+        '''authenticate method verifies the user's identity by checking the provided account number and PIN against the stored account information. It returns the AccountTransaction instance if authentication is successful, or None if it fails.'''
+        account = self.get_account(account_number)
+        if account and account.check_pin(pin):
+            return account
+        return None
 
     '''accounts = {
     "12345": <AccountTransaction object>,
