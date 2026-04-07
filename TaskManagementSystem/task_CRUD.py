@@ -1,9 +1,14 @@
+from datetime import datetime
 class taskAction:
-    def __init__(self, task_id, action_type, description):
+    def __init__(self, task_id, title, description, date_created, priority, status):
         self.task_id = task_id
-        self.action_type = action_type
+        self.title = title
         self.description = description
+        self.date_created = date_created
+        self.priority = priority
+        self.status = status
         self.task = []
+        self.admin_assign = {}
 
     def create_action(self, task):
         self.task.append(task)
@@ -29,3 +34,42 @@ class taskAction:
 
     def get_task_list(self):
         return self.task
+    
+# grouping the task and user together for assignment
+    def admin_assign_task_to_user(self,title, desc,user,date_assigned):
+        if user not in self.admin_assign:
+            self.addmin_assign[user] = {"description": desc, "title": title, "date_assigned": date_assigned}
+        else:
+            print(f"Task already assigned to user: {user}")
+
+    def admin_unassign_task_to_user(self,user):
+        if user in self.admin_assign:
+            del self.admin_assign[user]
+        else:
+            print(f"Task not found for user: {user}")
+
+
+    def admin_updated_task_to_user(self,user,title, desc,date_assigned):
+        if user in self.admin_assign:
+            self.admin_assign[user] = {"description": desc, "title": title, "date_assigned": date_assigned}
+        else:
+            print(f"Task not found for user: {user}")
+
+
+    def filter_tasks_by_status(self,status):
+        for task in self.task:
+            if task.status == status:
+                print(f"Task: {task}")
+
+    def filter_tasks_by_priority(self,priority):
+        for task in self.task:
+            if task.priority == priority:
+                print(f"Task: {task}")
+
+    
+    def filter_tasks_by_task(self,task):
+        for t in self.task:
+            if t == task:
+                print(f"Task: {task}")
+
+    
