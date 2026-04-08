@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-from shutil import copy
+from copy import deepcopy
+
 class taskAction:
 
     tasks = []
@@ -54,7 +55,7 @@ class taskAction:
                 "title": title,
                 "date_assigned": date_assigned
             }
-            self.admin_assign_history[user] = copy.deepcopy(self.admin_assign[user]) # copy.deepcopy is used to create a new copy of the dict, so that we can update the values of the dict without affecting the original dict
+            self.admin_assign_history[user] = deepcopy(self.admin_assign[user]) # copy.deepcopy is used to create a new copy of the dict, so that we can update the values of the dict without affecting the original dict
         else:
             print(f"Task already assigned to user: {user}")
 
@@ -67,12 +68,13 @@ class taskAction:
 
     def admin_updated_task_to_user(self, user, title, desc, date_assigned):
         if user in self.admin_assign:
-            self.admin_assign_history[user] = copy.deepcopy(self.admin_assign[user])
+            
             self.admin_assign[user] = {
                 "description": desc,
                 "title": title,
                 "date_assigned": date_assigned
             }
+            self.admin_assign_history[user] = deepcopy(self.admin_assign[user])
         else:
             print(f"Task not found for user: {user}")
 

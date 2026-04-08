@@ -47,6 +47,27 @@ class Main:
         print("Filtering tasks by task:")
         print("Filter Task:", self.task_ob1.filter_tasks_by_task(self.task_ob2))
 
+
+        # assigning task to user
+        admin_assign_ruchi = self.task_ob1.admin_assign_task_to_user("Task 1", "Teach swimming to aditya", "Ruchi", date(2026, 6, 1))
+        admin_assign_aditya = self.task_ob1.admin_assign_task_to_user("Task 2", "Teach cycling to ruchi", "aditya", date(2026, 9, 1))
+        print("Admin assign task to user:", self.task_ob1.admin_assign)
+
+        # updating task to user
+        update_user_ruchi = self.task_ob1.admin_updated_task_to_user('Ruchi',"task 3",'Teach running to aditya', date(2026, 7, 1))
+        print("Admin updated task to user:", self.task_ob1.admin_assign_history)
+
+        delete_user_aditya = self.task_ob1.admin_unassign_task_to_user('aditya')
+        print("Admin unassign task to user:", self.task_ob1.admin_assign)
+
+        '''demo:
+{
+'Ruchi': {'description': 'Teach swimming to aditya', 'title': 'Task 1', 'date_assigned': datetime.date(2026, 6, 1)}, 
+
+'aditya': {'description': 'Teach cycling to ruchi', 'title': 'Task 2', 'date_assigned': datetime.date(2026, 9, 1)}
+
+}'''
+
 if __name__ == "__main__":
     main = Main()
 
