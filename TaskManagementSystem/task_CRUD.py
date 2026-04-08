@@ -55,26 +55,53 @@ class taskAction:
                 "title": title,
                 "date_assigned": date_assigned
             }
-            self.admin_assign_history[user] = deepcopy(self.admin_assign[user]) # copy.deepcopy is used to create a new copy of the dict, so that we can update the values of the dict without affecting the original dict
+
+            # initialize history list
+            if user not in self.admin_assign_history:
+                self.admin_assign_history[user] = []
+
+            self.admin_assign_history[user].append({
+                "action": "assigned",
+                "data": deepcopy(self.admin_assign[user])
+            })
+
         else:
             print(f"Task already assigned to user: {user}")
 
     def admin_unassign_task_to_user(self, user):
         if user in self.admin_assign:
-            self.admin_assign_history[user]["date_assigned"] = 'unassigned'
+
+            old_data = deepcopy(self.admin_assign[user])
+
             del self.admin_assign[user]
+
+            self.admin_assign_history[user].append({
+                "action": "deleted",
+                "old": old_data
+            })
+
         else:
             print(f"Task not found for user: {user}")
 
     def admin_updated_task_to_user(self, user, title, desc, date_assigned):
+        
         if user in self.admin_assign:
-            
+
+            # store OLD data before update
+            old_data = deepcopy(self.admin_assign[user])
+
             self.admin_assign[user] = {
                 "description": desc,
                 "title": title,
                 "date_assigned": date_assigned
             }
-            self.admin_assign_history[user] = deepcopy(self.admin_assign[user])
+
+            self.admin_assign_history[user].append({
+                "action": "updated",
+                "old": old_data,
+                "new": deepcopy(self.admin_assign[user])
+            })
+
         else:
             print(f"Task not found for user: {user}")
 

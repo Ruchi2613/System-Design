@@ -49,16 +49,16 @@ class Main:
 
 
         # assigning task to user
-        admin_assign_ruchi = self.task_ob1.admin_assign_task_to_user("Task 1", "Teach swimming to aditya", "Ruchi", date(2026, 6, 1))
-        admin_assign_aditya = self.task_ob1.admin_assign_task_to_user("Task 2", "Teach cycling to ruchi", "aditya", date(2026, 9, 1))
+        admin_assign_ruchi = self.task_ob1.admin_assign_task_to_user("About Swimming", "Teach swimming to aditya", "Ruchi", date(2026, 6, 1))
+        admin_assign_aditya = self.task_ob1.admin_assign_task_to_user("About Cycling", "Teach cycling to ruchi", "aditya", date(2026, 9, 1))
         print("Admin assign task to user:", self.task_ob1.admin_assign)
 
         # updating task to user
-        update_user_ruchi = self.task_ob1.admin_updated_task_to_user('Ruchi',"task 3",'Teach running to aditya', date(2026, 7, 1))
+        update_user_ruchi = self.task_ob1.admin_updated_task_to_user('Ruchi',"About Running",'Teach running to aditya', date(2026, 7, 1))
         print("Admin updated task to user:", self.task_ob1.admin_assign_history)
 
         delete_user_aditya = self.task_ob1.admin_unassign_task_to_user('aditya')
-        print("Admin unassign task to user:", self.task_ob1.admin_assign)
+        print("Admin unassign task to user:", self.task_ob1.admin_assign_history)
 
         '''demo:
 {
