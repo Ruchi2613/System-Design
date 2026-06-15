@@ -36,11 +36,48 @@ class ATM:
                 balance = account.get_balance()
                 print(f"Your current balance is: {balance}")
             elif choice == '2':
+                # Aditya - You're checking that the ATM has money or not. 
+                # If the ATM can dispense money, it will reduce the balance of ATM.
+                # After that you check if your account has money or not. 
+                # If your account then does not have money, then you dont withdraw it from your account.
+                # But at this point you have already removed money from ATM
+                # 
+                # If ATM has money, then you try to withdraw from you bank,
+                """
+                Your Transactions should be be Atomic of ACID
+                It either fully executes it or it doesn't
+
+                Example:
+                ATM has 1000
+                Account has 200
+                you want to withdraw 500
+
+                then what your code does is - 
+                ATM becomes 500 (as 500 removed from ATM)
+                But 500 is > 200 - your balance. so you don;t withdraw from your account.
+
+                but you already removed from the ATM lol
+                """
                 amount = int(input("Enter the amount to withdraw: "))
                 if self.cash_dispenser.withdraw_cash(amount):
                     account.withdraw(amount)
                     print(f"Your new balance is: {account.get_balance()}")
             elif choice == '3':
+
+                """
+                Here you deposited in the ACCOUNT, but you added that money to the dispenser as well right.
+                Example:
+
+                ATM had 1000
+                Your acc had 500
+
+                you deposited 100
+                your account became 600
+
+                but you also added 100 to the ATM right so someone else can withdraw.
+                so your ATM should also become 1100
+                """
+
                 amount = int(input("Enter the amount to deposit: "))
                 account.deposit(amount)
                 print(f"Your new balance is: {account.get_balance()}")

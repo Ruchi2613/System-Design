@@ -6,7 +6,7 @@
 3. The system should interact with a bank's backend system to validate user accounts and perform transactions.
 4. The ATM should have a cash dispenser to dispense cash to users.
 
-Real ATM/Bank	Restaurant Analogy
+Real ATM/Bank   Restaurant Analogy
 ATM Machine	-> Waiter 🏧
 BankSystem	-> Kitchen 🏦
-Account	Your Wallet / Dish 💰🍲
+Account	Your Wallet / Dish 💰
